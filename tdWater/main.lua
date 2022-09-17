@@ -1,5 +1,9 @@
 --Place a configurable smoke emitter in the world
-
+local clock = os.clock
+function sleep(n)  -- seconds
+  local t0 = clock()
+  while clock() - t0 <= n do end
+end
 
 function init()
 	RegisterTool("tdwater", "TeardownWater", "MOD/vox/smokegun.vox")
@@ -23,40 +27,11 @@ end
 function rnd(mi, ma)
 	return math.random(1000)/1000*(ma-mi) + mi
 end
-
---Main tick function handles tool logic
-function tick(dt)
-	SetString("game.tool.tdwater.ammo.display", "Click to start pouring")
-
-	--Check if smokegun is selected
-	if GetString("game.player.tool") == "tdwater" then
-		if GetBool("game.player.canusetool") and InputPressed("usetool") then
-			local ct = GetCameraTransform();
-			local pos = ct.pos
-			local dir = TransformToParentVec(ct, Vec(0, 0, -1))
-			local hit, dist, normal, shape = QueryRaycast(pos, dir, 500)
-			if hit then
-				local hitPoint = VecAdd(pos, VecScale(dir, dist))
-				local b = GetShapeBody(shape)
-				local t = GetBodyTransform(b)
-				emitBody = b
-				emitPos = TransformToLocalPoint(t, hitPoint)
-				emitDir = TransformToLocalVec(t, normal)
-				emitTimer = 0
-				emit = true
-			end
-		end
-	end
-end
-
-
---Update function handles smoke emission
---It is important to put it in update and not tick for constant emission rate
 function update(dt)
 	if emit then
 		local radius = 0.5
 		local life = 20
-		local emitPeriod = 1000000000
+		local emitPeriod = 10000
 		local count = 8
 		local vel = 10
 		local drag = 1.0
@@ -105,5 +80,46 @@ function update(dt)
 		end
 	end
 end
+
+
+--Main tick function handles tool logic
+function tick(dt)
+	SetString("game.tool.tdwater.ammo.display", "Click to start pouring")
+
+	--Check if smokegun is selected
+	if GetString("game.player.tool") == "tdwater" then
+		if GetBool("game.player.canusetool") and InputPressed("usetool") then
+			local ct = GetCameraTransform();
+			local pos = ct.pos
+			local dir = TransformToParentVec(ct, Vec(0, 0, -1))
+			local hit, dist, normal, shape = QueryRaycast(pos, dir, 500)
+			if hit then
+				local hitPoint = VecAdd(pos, VecScale(dir, dist))
+				local b = GetShapeBody(shape)
+				local t = GetBodyTransform(b)
+				emitBody = b
+				emitPos = TransformToLocalPoint(t, hitPoint)
+				emitDir = TransformToLocalVec(t, normal)
+				emitTimer = 0
+				emit = true
+			end
+		end
+	end
+
+	if PauseMenuButton("Cleanup (tdWater)") then
+		emitPeriod = 2
+		sleep(2)
+		emitPeriod = 10000
+		
+	end
+
+
+
+
+end
+
+
+--Update function handles smoke emission
+--It is important to put it in update and not tick for constant emission rate
 
 
