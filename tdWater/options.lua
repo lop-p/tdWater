@@ -5,7 +5,7 @@
 		        UiTranslate(UiCenter(), UiMiddle())
 		        UiAlign("center middle")
                 UiTranslate(bg.x, bg.y)
-                UiImage(slideshowImages[bg.i])
+                UiImage(bg)
             UiPop()
         end
     end
@@ -39,8 +39,22 @@
     
     --Configuration UI
     function draw()
-        bgDraw()
-        UiTranslate(UiCenter(), UiMiddle())
+        if GetString("savegame.mod.color") == "Normal" then
+            bgDraw("resource/norm.png")
+        elseif GetString("savegame.mod.color") == "Classic tdWater" then
+            bgDraw("resource/class.png")
+        elseif GetString("savegame.mod.color") == "Toxic Chemicals" then
+            bgDraw("resource/rad.png")
+        end
+            
+            
+        UiTranslate(UiWidth()-300, UiHeight()/2)
+        UiPush()
+            UiTranslate(-10, 10)
+            UiColor(0,0,0)
+            UiRect(500, -42)
+        UiPop()
+        
         property("Color", {"Normal", "Classic tdWater", "Toxic Chemicals"}, "savegame.mod.color")
     end
     
