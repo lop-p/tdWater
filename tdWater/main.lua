@@ -101,8 +101,7 @@ function tick(dt)
 		end
 	end
 
-		
-	end
+
 
 
 
