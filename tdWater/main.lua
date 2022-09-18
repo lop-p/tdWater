@@ -32,7 +32,7 @@ function update(dt)
 		local drag = 1.0
 		local gravity = -5
 		local red = 0
-		local green = 0
+		local green = 0.498
 		local blue = 1
 		local vol = 0.3
 		local alpha = 1
