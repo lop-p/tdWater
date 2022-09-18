@@ -38,14 +38,14 @@ function update(dt)
 		local alpha = 1
 
 		local propColor = GetString("savegame.mod.color")
-		if propColor == "Red" then
-			red = 0.7
-			green = 0.5
-			blue = 0.5
-		elseif propColor == "Green" then
-			red = 0.6
-			green = 0.7
-			blue = 0.6
+		if propColor == "Classic tdWater" then
+			red = 0
+			green = 0
+			blue = 1
+		elseif propColor == "Toxic Chemicals" then
+			red = 0
+			green = 1
+			blue = 0
 		end
 
 		

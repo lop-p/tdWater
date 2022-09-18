@@ -29,8 +29,6 @@
     --Configuration UI
     function draw()
         UiTranslate(0, 22)
-        property("Color", {"Toxic Chemicals", "Classic tdWater", "Normal"}, "savegame.mod.color")
-        UiTranslate(0, 22)
-        property("Gravity", {"None", "Upwards", "Downwards"}, "savegame.mod.gravity")
+        property("Color", {"Normal", "Classic tdWater", "Toxic Chemicals"}, "savegame.mod.color")
     end
     
