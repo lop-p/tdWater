@@ -24,7 +24,7 @@ function rnd(mi, ma)
 end
 function update(dt)
 	if emit then
-		local radius = 1.3
+		local radius = 0.7
 		local life = 20
 		local emitPeriod = 10000
 		local count = 3
@@ -37,6 +37,18 @@ function update(dt)
 		local vol = 0.3
 		local alpha = 1
 
+		local propColor = GetString("savegame.mod.color")
+		if propColor == "Red" then
+			red = 0.7
+			green = 0.5
+			blue = 0.5
+		elseif propColor == "Green" then
+			red = 0.6
+			green = 0.7
+			blue = 0.6
+		end
+
+		
 		local bt = GetBodyTransform(emitBody)
 		local pos = TransformToParentPoint(bt, emitPos)
 		local dir = TransformToParentVec(bt, emitDir)
@@ -70,7 +82,7 @@ function update(dt)
 
 		--Check if we should stop emitting
 		emitTimer = emitTimer + dt
-		if emitTimer > emitPeriod then
+		if shutup then
 			emit = false
 		end
 	end
@@ -84,6 +96,7 @@ function tick(dt)
 	--Check if smokegun is selected
 	if GetString("game.player.tool") == "tdwater" then
 		if GetBool("game.player.canusetool") and InputPressed("usetool") then
+			
 			local ct = GetCameraTransform();
 			local pos = ct.pos
 			local dir = TransformToParentVec(ct, Vec(0, 0, -1))
@@ -97,12 +110,16 @@ function tick(dt)
 				emitDir = TransformToLocalVec(t, normal)
 				emitTimer = 0
 				emit = true
+				shutup = false
 			end
 		end
 	end
 
 
-
+	
+	if PauseMenuButton("Stop emitting (tdWater)") then
+		shutup = true
+	end
 
 
 
