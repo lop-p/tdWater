@@ -1,4 +1,15 @@
 --Helper function for UI to configure properties
+    function bgDraw(bg)
+        if bg then
+            UiPush()
+		        UiTranslate(UiCenter(), UiMiddle())
+		        UiAlign("center middle")
+                UiTranslate(bg.x, bg.y)
+                UiImage(slideshowImages[bg.i])
+            UiPop()
+        end
+    end
+
     function property(name, list, key)
         local current = GetString(key)
         if current == "" then 
@@ -28,7 +39,8 @@
     
     --Configuration UI
     function draw()
-        UiTranslate(0, 22)
+        bgDraw()
+        UiTranslate(UiCenter(), UiMiddle())
         property("Color", {"Normal", "Classic tdWater", "Toxic Chemicals"}, "savegame.mod.color")
     end
     
