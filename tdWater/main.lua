@@ -24,10 +24,10 @@ function rnd(mi, ma)
 end
 function update(dt)
 	if emit then
-		local radius = 0.5
+		local radius = 1.5
 		local life = 20
 		local emitPeriod = 10000
-		local count = 8
+		local count = 3
 		local vel = 10
 		local drag = 1.0
 		local gravity = -5
