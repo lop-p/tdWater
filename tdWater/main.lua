@@ -1,9 +1,4 @@
 --Place a configurable smoke emitter in the world
-local clock = os.clock
-function sleep(n)  -- seconds
-  local t0 = clock()
-  while clock() - t0 <= n do end
-end
 
 function init()
 	RegisterTool("tdwater", "TeardownWater", "MOD/vox/smokegun.vox")
@@ -106,10 +101,6 @@ function tick(dt)
 		end
 	end
 
-	if PauseMenuButton("Cleanup (tdWater)") then
-		emitPeriod = 2
-		sleep(2)
-		emitPeriod = 10000
 		
 	end
 
