@@ -50,11 +50,13 @@
             
         UiTranslate(UiWidth()-300, UiHeight()/2)
         UiPush()
-            UiTranslate(-10, 10)
+            UiTranslate(-10, 25)
             UiColor(0,0,0)
             UiRect(500, -42)
         UiPop()
         
         property("Color", {"Normal", "Classic tdWater", "Toxic Chemicals"}, "savegame.mod.color")
+
+        UiTranslate(0,20)
     end
     

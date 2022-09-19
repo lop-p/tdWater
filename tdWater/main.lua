@@ -25,12 +25,12 @@ end
 function update(dt)
 	if emit then
 		local radius = 0.7
-		local life = 20
+		local life = 20 
 		local emitPeriod = 10000
 		local count = 3
 		local vel = 10
 		local drag = 1.0
-		local gravity = -10
+		local gravity = -30  --probably the worst way i could've done this but it kinda works
 		local red = 0
 		local green = 0.498
 		local blue = 1
@@ -63,8 +63,11 @@ function update(dt)
 		ParticleDrag(drag)
 		ParticleColor(red, green, blue)			-- no
 		
+
 		--Emit particles
 		for i=1, count do
+
+
 			--Randomize position slightly. This is important when spawning multiple particles at the same time
 			local p = VecAdd(pos, VecAdd(VecScale(dir, radius), rndVec(radius)))
 			
@@ -78,6 +81,7 @@ function update(dt)
 
 			--Spawn particle into the world
 			SpawnParticle(p, v, l)
+
 		end
 
 		--Check if we should stop emitting
