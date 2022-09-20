@@ -1,3 +1,5 @@
+
+
 --Helper function for UI to configure properties
     function bgDraw(bg)
         if bg then
@@ -45,6 +47,8 @@
             bgDraw("resource/class.png")
         elseif GetString("savegame.mod.color") == "Toxic Chemicals" then
             bgDraw("resource/rad.png")
+        elseif GetString("savegame.mod.color") == "Oil" then
+            bgDraw("resource/oil.png")
         end
             
             
@@ -55,7 +59,7 @@
             UiRect(500, -42)
         UiPop()
         
-        property("Color", {"Normal", "Classic tdWater", "Toxic Chemicals"}, "savegame.mod.color")
+        property("Color", {"Normal", "Classic tdWater", "Toxic Chemicals", "Oil"}, "savegame.mod.color")
 
         UiTranslate(0,20)
     end

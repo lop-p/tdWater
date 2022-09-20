@@ -46,6 +46,10 @@ function update(dt)
 			red = 0
 			green = 1
 			blue = 0
+		elseif propColor == "Oil" then
+			red = 0
+			green = 0
+			blue = 0
 		end
 
 		

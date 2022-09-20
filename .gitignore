@@ -1,6 +1,9 @@
 # this is my mortal enemy
 id.txt
 
+# only really for me
+OhioUI/
+
 # luarocks build files
 *.src.rock
 *.zip
