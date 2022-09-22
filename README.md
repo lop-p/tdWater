@@ -1,6 +1,7 @@
 # tdWater
-hello and welcome to my ocean of code   
-it's a sea of flaming dogcrap  
-have fun  
+tdWater is a mod for Teardown by Tuxedo Labs.  
 
-mod files in `tdWater/`    
+tdWater is a smoke simulation that has water physics.
+
+
+
