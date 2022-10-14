@@ -60,12 +60,12 @@ function update(dt)
 		
 		--Set up the particle state
 		ParticleReset()
-		ParticleType("smoke")
+		ParticleType("smoke")             -- no shit
 		ParticleRadius(radius)
 		ParticleAlpha(alpha, alpha)	-- Ramp up fast, ramp down after 50%
-		ParticleGravity(gravity)				-- Slightly randomized gravity looks better
-		ParticleDrag(drag)
-		ParticleColor(red, green, blue)			-- no
+		ParticleGravity(gravity)				-- common hellishly randomized gravity W
+		ParticleDrag(drag)                                   -- Do it go up or down?
+		ParticleColor(red, green, blue)			-- RGB stuff.
 		
 
 		--Emit particles
@@ -132,9 +132,3 @@ function tick(dt)
 
 
 end
-
-
---Update function handles smoke emission
---It is important to put it in update and not tick for constant emission rate
-
-
