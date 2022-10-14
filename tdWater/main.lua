@@ -17,21 +17,6 @@ function rndVec(length)
 	return VecScale(v, length)	
 end
 
-function twPhys(type)
-	-- Teardown Water Physics Calculation System Please Help
-	
-	local count = 0
-	if type == "wtr" then
-
-		local grabbity = -math.random(9,30)
-		
-		
-
-		return(grabbity)
-
-	end
-
-end
 
 
 --Helper to return a random number in range mi to ma
@@ -46,7 +31,7 @@ function update(dt)
 		local count = 3
 		local vel = 10
 		local drag = 1.0
-		local gravity = twPhys("wtr")
+		local gravity = -math.random(9,30)
 		local red = 0
 		local green = 0.498
 		local blue = 1
